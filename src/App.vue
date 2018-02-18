@@ -1,14 +1,8 @@
 
 <template>
-  <div id="app">
-    <h1>Hello world</h1>
-  </div>
+  <app-servers />
 </template>
 
-<script>
-    export default {
-    }
-</script>
 
 <style lang="scss">
 
