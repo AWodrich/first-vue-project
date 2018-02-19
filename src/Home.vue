@@ -1,6 +1,7 @@
 
 <template>
     <div>
+        <CardImage />
         <HorizontalList />
     </div>
 </template>
@@ -8,10 +9,12 @@
 <script>
 
     import HorizontalList from './HorizontalList';
+    import CardImage from './CardImage';
 
     export default {
         components: {
-        HorizontalList,
+            HorizontalList,
+            CardImage
         }
     }
 </script>

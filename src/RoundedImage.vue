@@ -1,12 +1,24 @@
 
 <template>
-  <div class="rounded-image" :class="color">color: {{ color }} / index: {{ index }}</div>
+    <div class="rounded-image" :class="componentClasses"  @click="changeBackgroundColor">{{ index }}</div>
 </template>
 
 <script>
 
     export default {
-        props: ['color','index']
+        props: ['color', 'index'],
+
+        methods: {
+            changeBackgroundColor(e) {
+                this.$emit('click', e);
+            },
+        },
+
+        computed: {
+            componentClasses() {
+                return (this.color && this.color !== '') ? [`rounded-image--${this.color}`] : '';
+            }
+        }
     }
 </script>
 
@@ -15,10 +27,19 @@
         width: 10rem;
         height: 10rem;
         border-radius: 50%;
-        background-color: blue;
+        margin-right: 2rem;
+        border: 1px solid blue;
+
+        &--red {
+            background-color: red;
+        }
+
+        &__main {
+            width: 20rem;
+            height: 20rem;
+            border: 2px solid pink
+        }
     }
 
-    .red {
-        background-color: red;
-    }
+
 </style>

@@ -1,32 +1,51 @@
-
 <template>
     <div class="horizontal-list">
-        <div v-for="(item, index) in 10" @click="changeBackgroundColor(index)">
-            <RoundedImage
-                :color="color"
-                :index="index"
-            />
+        <div
+            v-for="index in 4"
+        >
+            <template
+                v-if="toHideIndex !== index"
+            >
+                <RoundedImage
+                    :class="{'rounded-image rounded-image--red' : (activeIndex == index)}"
+                    @click="changeBackgroundColor(index)"
+                    :index="index"
+                />
+                <Button
+                    :message="messageOnButton"
+                    @click="hideImage(index)"
+                />
+            </template>
         </div>
     </div>
 </template>
 
 <script>
+
     import RoundedImage from './RoundedImage';
+    import Button from './Button';
 
     export default {
         data() {
             return {
-                color: 'blue',
+                color: '',
+                activeIndex: 0,
+                messageOnButton: 'change me',
+                toHideIndex: null,
             }
         },
         components: {
             RoundedImage,
+            Button,
         },
 
         methods: {
             changeBackgroundColor(index) {
-                this.color="red"
-                console.log(this.color, index)
+                this.activeIndex = index;
+            },
+
+            hideImage(index) {
+                this.toHideIndex = index;
             }
         },
     }
@@ -41,4 +60,5 @@
         padding: 1rem;
         margin: 1rem;
     }
+
 </style>
